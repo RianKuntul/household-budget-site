@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HomeLedger — Household Budget Planner</title>
+<meta name="description" content="HomeLedger is a household budget planner: plan the month, track every expense, grow savings goals and never miss a bill. Your data stays in your browser.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAn0lEQVR4nGNkwAJEgnX/YxOnFLxZe5kRXQxFgFYW43MIE70tR7eLid6WozuCiZBCWgPGgfA9MhjwEGAhpOB5zneiDZOcwkmyAwY8BAbcAQSjgJxgJQUMeAgMuAOomgtwAXzROOAhMOAOGM0FA+6A0Vww4A4YzQWjDhh4B2DrLtELvFl7mXHgQwDmEnpbDLOTCV2AnpYzMKD1jmGAnt1zAHfQLdjWNbzBAAAAAElFTkSuQmCC">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#/" aria-label="HomeLedger home">
+      <span class="brand-mark" aria-hidden="true">H</span>
+      <span class="brand-name">HomeLedger</span>
+      <span class="brand-tag">household budget</span>
+    </a>
+    <nav class="mainnav" aria-label="Main navigation">
+      <a href="#/" data-route="">Dashboard</a>
+      <a href="#/planner" data-route="planner">Budget Planner</a>
+      <a href="#/tracker" data-route="tracker">Expense Tracker</a>
+      <a href="#/goals" data-route="goals">Savings Goals</a>
+      <a href="#/bills" data-route="bills">Bills &amp; Subscriptions</a>
+      <a href="#/tips" data-route="tips">Money Guides</a>
+    </nav>
+    <button id="resetDemo" class="btn btn-ghost" type="button" title="Restore the sample household data">Reset demo data</button>
+  </div>
+</header>
+
+<main id="view" class="wrap" aria-live="polite"></main>
+
+<footer class="sitefoot">
+  <div class="wrap foot-inner">
+    <p><strong>HomeLedger</strong> — a household budget planner that runs entirely in your browser. Your figures are stored on this device only, in local storage; nothing leaves it.</p>
+    <p class="foot-links">
+      <a href="#/planner">Plan the month</a> ·
+      <a href="#/tracker">Track spending</a> ·
+      <a href="#/goals">Grow savings</a> ·
+      <a href="#/bills">Bills &amp; subscriptions</a> ·
+      <a href="#/tips">Money guides</a>
+    </p>
+    <p class="foot-small">Sample household figures are included so every tool works out of the box. Change them to your own numbers — the planner, tracker and goals all update together.</p>
+  </div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
