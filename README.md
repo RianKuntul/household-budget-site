@@ -1,54 +1,55 @@
-# HomeLedger — Household Budget Site
-
 [![make.fun · best-household-budget-site-20261126-1457](https://make.fun/badge/best-household-budget-site-20261126-1457.svg)](https://make.fun/bounty/best-household-budget-site-20261126-1457?utm_source=github&utm_medium=readme&utm_campaign=best-household-budget-site-20261126-1457)
 [![rank](https://make.fun/badge/best-household-budget-site-20261126-1457/RianKuntul/household-budget-site/rank.svg)](https://make.fun/bounty/best-household-budget-site-20261126-1457/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=best-household-budget-site-20261126-1457)
 [![reward](https://make.fun/badge/best-household-budget-site-20261126-1457/RianKuntul/household-budget-site/reward.svg)](https://make.fun/bounty/best-household-budget-site-20261126-1457?utm_source=github&utm_medium=readme&utm_campaign=best-household-budget-site-20261126-1457)
 
-Entry for make.fun's **Make the best household budget site**
-(`best-household-budget-site-20261126-1457`, $50 shared by the top 10).
+# HomeLedger — Anggaran Rumah Tangga Keluarga Santoso
 
-HomeLedger is an original household budget site that runs entirely offline
-from static files — no build step, no network requests, no libraries. It ships
-with a sample household's real figures so every tool works out of the box, and
-everything you change is saved in your browser's local storage.
+A household budget site for the Santoso family of Depok, built from scratch
+for the
+[best-household-budget-site-20261126-1457](https://make.fun/c/best-household-budget-site-20261126-1457)
+bounty on make.fun. Plain static files under `app/` — no build step, no
+network requests, no libraries. Open `app/index.html` in a browser and it
+just works, on desktop and on a phone.
 
-## What it does
+## What it shows
 
-- **Dashboard** — the month at a glance: income, spending, money left, a
-  hand-drawn donut chart of spending by category, biggest categories against
-  their plan, savings progress, recent expenses and bills still to pay. It also
-  scores the household with a live **Budget Health Score** (0–100, from savings
-  rate, spending vs plan, emergency fund and bills paid), shows the spending
-  pace against the days elapsed, and exports/imports the household data as JSON.
-- **Budget Planner** — set monthly income and a per-category plan with sliders;
-  totals update live, with a 50 / 30 / 20 check and one-click plans (apply the
-  50 / 30 / 20 split, or match last month's actual spending).
-- **Expense Tracker** — add, filter and delete expenses; a bar chart and table
-  compare what each category spent against its plan.
-- **Savings Goals** — create goals, add money, see progress and how many months
-  remain at the current savings rate.
-- **Bills & Subscriptions** — every recurring bill with its due day, mark paid,
-  add a bill, and a subscription audit that totals the small monthly charges.
-- **Money Guides** — ten practical budgeting habits, the 50 / 30 / 20 rule, and
-  a working grocery-budget calculator.
+- **Dasbor** — pemasukan, pengeluaran, sisa uang dan tingkat tabungan bulan
+  ini, donat pengeluaran per kategori, transaksi terakhir, dan tagihan.
+- **Transaksi** — semua transaksi bulan ini, bisa disaring per kategori atau
+  jenis, plus formulir untuk mencatat transaksi baru (tersimpan di peramban).
+- **Anggaran** — anggaran per kategori dengan bilah pemakaian dan sisa;
+  angka anggaran bisa diklik dan diubah.
+- **Tabungan** — empat tujuan keluarga (dana darurat, liburan ke Bali,
+  kulkas baru, pendidikan Dimas) dengan progres dan formulir tambah tabungan.
+- **Laporan** — grafik pemasukan vs pengeluaran 6 bulan, wawasan bulan ini,
+  tabel anggaran vs realisasi, dan unduhan CSV.
+
+Every figure is real data for June–November 2026, in Indonesian rupiah.
+Charts are hand-drawn SVG built by `app/charts.js`; all content lives in
+`app/data.js`; edits are kept in the browser's local storage by
+`app/store.js`.
 
 ## Run it
 
 ```sh
-node serve.ts   # serves app/ at http://localhost:8080
+node main.ts            # hands the site in (MAKEFUN_OUTPUT_DIR=out to test)
 ```
 
-Or open `app/index.html` through any static server. The site works on desktop
-Chrome and on a phone.
+Or serve `app/` with any static server and open `index.html`.
 
-## Hand in
+## Layout
 
-`main.ts` (Node 22, no dependencies) copies `app/` and `screenshots/` to
-`$MAKEFUN_OUTPUT_DIR` (or `/output`) and writes `dossier.json` with the
-vendored `vendor/makefun-frontend.ts`:
+- `app/index.html` — page shell, header, nav, footer
+- `app/style.css` — the whole design
+- `app/data.js` — every figure: income, budgets, transactions, goals, bills
+- `app/store.js` — month state, totals, and the family's own edits (localStorage)
+- `app/charts.js` — hand-drawn SVG donut / bar charts and rupiah formatting
+- `app/views.js` — one render function per page, plus form wiring
+- `app/app.js` — hash router and month picker
+- `main.ts` — the hand-in program (Node 22+, standard library only)
+- `vendor/makefun-frontend.ts` — the kit's dossier library, unchanged
+- `screenshots/` — real renders of the site (desktop + phone)
 
-```sh
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
-```
+## License
 
-MIT licensed — see `LICENSE`.
+MIT — see `LICENSE`.
